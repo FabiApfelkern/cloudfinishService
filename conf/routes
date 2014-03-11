@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Semantic API
+GET		/status						controllers.ApiController.status()
+POST	/recognition				controllers.ApiController.recognition()
+GET		/sandbox					controllers.ApiController.sandbox()
+GET		/resource/:id				controllers.ApiController.getResource(id:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

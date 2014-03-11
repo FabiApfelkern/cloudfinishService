@@ -1,0 +1,8 @@
+<rdf:RDF>
+	<rdf:Description rdf:about="http://localhost:9000/resource/wheels">
+		<ns4:diameter rdf:datatype="http://dbpedia.org/datatype/meter">0.9</ns4:size>
+		<ns4:weight rdf:datatype="http://dbpedia.org/datatype/kilogram">35.3</ns4:weight>
+		<dbpprop:yearconstruction rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1989</dbpprop:yearconstruction>
+		<cloud:connection rdf:resource="http://localhost:9000/resource/rod">
+		<cloud:moves rdf:resource="http://localhost:9000/resource/rod">
+</rdf:RDF>
