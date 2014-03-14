@@ -7,6 +7,6 @@ xmlns:cloud="http://dbpedia.org/property/">
 		<ns4:diameter rdf:datatype="http://dbpedia.org/datatype/meter">0.9</ns4:diameter>
 		<ns4:weight rdf:datatype="http://dbpedia.org/datatype/kilogram">35.3</ns4:weight>
 		<dbpprop:yearconstruction rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1989</dbpprop:yearconstruction>
-		<cloud:connection rdf:resource="http://localhost:9000/resource/rod" />
+		<cloud:connection rdf:resource="http://localhost:9000/resource/stack" />
   </rdf:Description>
 </rdf:RDF>
