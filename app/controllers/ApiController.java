@@ -74,24 +74,39 @@ public class ApiController extends Controller {
         	try {
             	model.read(s);
             	StmtIterator stmts = model.listStatements();
-            	result.put("status", "ok");
+             	result.put("status", "ok");
         
+        		ObjectNode properties = Json.newObject();
+        		
             	while (stmts.hasNext()) {
             		Statement stmt = stmts.next();
             		Resource subject = stmt.getSubject();
             		Property predicate = stmt.getPredicate();
             		RDFNode object = stmt.getObject();
-            		
-            		if(predicate.toString().equals("http://dbpedia.org/ontology/MeanOfTransportation/diameter")) {
-            			resource.put("diamater", object.asLiteral().getString());
-            			Logger.info(object.asLiteral().getString());
+
+            		if(predicate.getNameSpace().equals("http://dbpedia.org/ontology/MeanOfTransportation/")) {
+            			String datatype = object.asLiteral().getDatatypeURI();
+            			datatype = datatype.substring(datatype.lastIndexOf('/') + 1);
+            			String name = predicate.getLocalName();
+            			String value = object.asLiteral().getString();
+            			properties.put(name, value + " " + datatype);
+            			Logger.info(predicate.getLocalName() + ": " + object.asLiteral().getString());
+            			
             		}
             		
-            		if(predicate.toString().equals("http://dbpedia.org/property/connection")) {
+              		if(predicate.toString().equals("http://dbpedia.org/property/name")) {
+            			resource.put("name", object.asLiteral().getString());
+            			Logger.info(object.toString());
+            		}
+              		
+            		if(predicate.toString().equals("http://localhost:9000/property/connection")) {
             			resource.put("connection", object.toString());
             			Logger.info(object.toString());
             		}
             		
+            		if(properties.size() > 0) {
+            			resource.put("properties",properties);
+            		}
             		result.put(s,resource);
             	}
             	
@@ -103,8 +118,7 @@ public class ApiController extends Controller {
         	
         }
         
-		//result.put("status", json.get("name"));
-		return ok(result);	
+        return ok(result);	
 	}
 	
 	
