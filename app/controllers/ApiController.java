@@ -3,13 +3,19 @@ package controllers;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 
 
+
+
+
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -77,6 +83,7 @@ public class ApiController extends Controller {
              	result.put("status", "ok");
         
         		ObjectNode properties = Json.newObject();
+        		ArrayNode connections = JsonNodeFactory.instance.arrayNode();
         		
             	while (stmts.hasNext()) {
             		Statement stmt = stmts.next();
@@ -99,8 +106,9 @@ public class ApiController extends Controller {
             			Logger.info(object.toString());
             		}
               		
+              		
             		if(predicate.toString().equals("http://localhost:9000/property/connection")) {
-            			resource.put("connection", object.toString());
+            			connections.add(object.toString());
             			Logger.info(object.toString());
             		}
             		
@@ -109,6 +117,8 @@ public class ApiController extends Controller {
             		}
             		result.put(s,resource);
             	}
+            	
+        		resource.put("connections", connections);
             	
 			} catch (Exception e) {
 				result.put("status", "Error");

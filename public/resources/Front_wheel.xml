@@ -9,5 +9,6 @@ xmlns:cloud="http://localhost:9000/property/">
 		<ns4:weight rdf:datatype="http://dbpedia.org/datatype/kilogram">35.3</ns4:weight>
 		<dbpprop:yearconstruction rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1989</dbpprop:yearconstruction>
 		<cloud:connection rdf:resource="http://localhost:9000/resource/Front_axis" />
+		<cloud:connection rdf:resource="http://localhost:9000/resource/Connecting_rod" />
   </rdf:Description>
 </rdf:RDF>

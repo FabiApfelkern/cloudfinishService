@@ -2,11 +2,10 @@
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 xmlns:ns4="http://dbpedia.org/ontology/MeanOfTransportation/"
 xmlns:dbpprop="http://dbpedia.org/property/"
-xmlns:cloud="http://dbpedia.org/property/">
+xmlns:cloud="http://localhost:9000/property/">
 	<rdf:Description rdf:about="http://localhost:9000/resource/wheels">
-		<ns4:diameter rdf:datatype="http://dbpedia.org/datatype/meter">0.9</ns4:diameter>
-		<ns4:weight rdf:datatype="http://dbpedia.org/datatype/kilogram">35.3</ns4:weight>
+		<dbpprop:name xml:lang="en">Cab</dbpprop:name>
+		<ns4:height rdf:datatype="http://dbpedia.org/datatype/meter">3.0</ns4:height>
 		<dbpprop:yearconstruction rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1989</dbpprop:yearconstruction>
-		<cloud:connection rdf:resource="http://localhost:9000/resource/Front_axis" />
   </rdf:Description>
 </rdf:RDF>
